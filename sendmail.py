@@ -23,6 +23,6 @@ msg=MIMEText(body,'html')
 msg['Subject']=subject
 msg['From']='info@drgreenberg.ca'
 msg['To']=recipient
-with smtplib.SMPT_SSL('mail.drgreenberg.ca',465) as server:
+with smtplib.SMTP_SSL('mail.drgreenberg.ca',465) as server:
 	server.login("info@drgreenberg.ca","<password>")
 	server.send_message(msg)

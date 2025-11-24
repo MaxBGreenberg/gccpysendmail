@@ -1,6 +1,6 @@
+#!/bin/env python3
 # Script for automating sending of appointment confirmation emails
 # Licensed under GPLv2
-#!/bin/env python3
 from datetime import datetime, timedelta
 import smtplib
 from email.mime.text import MIMEText

@@ -13,7 +13,7 @@ print("Enter the number of patients:")
 patnum=input()
 print("Enter the email address of the recipient:")
 recipient=input()
-if patnum=="1":
+if patnum in ("","0","1"):
 	appt="son's circumcision"
 else:
 	appt="sons' circumcisions"

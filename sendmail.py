@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 import json
 print("Enter appointment date:")
 apptdate=input()
-print("Enter appointment time:")
+print("Enter appointment time (HHMM 24hr format):")
 appttime=input()
 print("Enter the number of patients:")
 patnum=input()

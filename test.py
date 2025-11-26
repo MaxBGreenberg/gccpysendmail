@@ -14,11 +14,12 @@ if patnum in ("","0","1"):
 	appt="son's circumcision"
 else:
 	appt="sons' circumcisions"
-appttimeobj=datetime.strptime(appttime, "%I:%M%p")
+appttimeobj=datetime.strptime(appttime, "%H%M")
 arrtimeobj=appttimeobj-timedelta(minutes=15)
 arrtime=arrtimeobj.strftime("%I:%M%p").lstrip("0")
-body=f"Hello,<br><br>Thank you for booking your {appt} with the <a href='https://drgreenberg.ca'>Greenberg Circumcision Centre</a>.<br>Your appointment is booked for {apptdate} at {appttime}. Please arrive no later than {arrtime}.<br>Please remember to pay by the end of the day today either via the <a href='https://drgreenberg.ca/product/circumcision-services/'>secture web protal</a> or by Interac e-Transfer to <a href='mailto:mark@drgreenberg.ca'>mark@drgreenberg.ca</a>.<br>A map to our location can be found <a href='https://drgreenberg.ca/contact/'>here</a>.<br>Everything else you need to know is on <a href='https://drgreenberg.ca'>our website</a>.<br><br>Thanks,<br>Max"
+appttimedisp=appttimeobj.strftime("%I:%M%p").lstrip("0")
 print(apptdate)
 print(appttime)
+print(appttimedisp)
 print(arrtime)
-print(body)
+print(appt)

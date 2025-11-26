@@ -2,9 +2,9 @@
 # Script for automating sending of appointment confirmation emails
 # Licensed under GPLv2
 from datetime import datetime, timedelta
-print("Enter appointment date (HHMM 24hr format:")
+print("Enter appointment date:")
 apptdate=input()
-print("Enter appointment time:")
+print("Enter appointment time (HHMM 24hr format):")
 appttime=input()
 print("Enter the number of patients:")
 patnum=input()

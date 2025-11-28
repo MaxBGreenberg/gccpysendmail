@@ -7,7 +7,7 @@ import smtplib
 from email.mime.text import MIMEText
 import json
 # Prompt for user input
-print("Enter appointment date:")
+print("Enter appointment date (YYYYMMDD format):")
 apptdate=input()
 print("Enter appointment time (HHMM 24hr format):")
 appttime=input()
@@ -23,12 +23,14 @@ else:
 # Convert input date and time to date time objects
 # Get arrival time by doing arithmetic on apppointment time
 # Convert appointment time from input fomrat to display format
+apptdateobj=datetime.strptime(apptdate, "%Y%m%d")
 appttimeobj=datetime.strptime(appttime, "%H%M")
 arrtimeobj=appttimeobj-timedelta(minutes=15)
 arrtime=arrtimeobj.strftime("%I:%M%p").lstrip("0")
 appttimedisp=appttimeobj.strftime("%I:%M%p").lstrip("0")
+apptdatedisp=f"{apptdateobj.strftime('%A')}, {apptdateobj.strftime('%B')} {apptdateobj.day}"
 # HTML for body of the email
-body=f"Hello,<br><br>Thank you for booking your {appt} with the <a href='https://drgreenberg.ca'>Greenberg Circumcision Centre</a>.<br>Your appointment is booked for {apptdate} at {appttimedisp}. Please arrive no later than {arrtime}.<br>Please remember to pay by the end of the day today either via the <a href='https://drgreenberg.ca/product/circumcision-services/'>secture web protal</a> or by Interac e-Transfer to <a href='mailto:mark@drgreenberg.ca'>mark@drgreenberg.ca</a>.<br>A map to our location can be found <a href='https://drgreenberg.ca/contact/'>here</a>.<br>Everything else you need to know is on <a href='https://drgreenberg.ca'>our website</a>.<br><br>Thanks,<br>Max"
+body=f"Hello,<br><br>Thank you for booking your {appt} with the <a href='https://drgreenberg.ca'>Greenberg Circumcision Centre</a>.<br>Your appointment is booked for {apptdatedisp} at {appttimedisp}. Please arrive no later than {arrtime}.<br>Please remember to pay by the end of the day today either via the <a href='https://drgreenberg.ca/product/circumcision-services/'>secture web protal</a> or by Interac e-Transfer to <a href='mailto:mark@drgreenberg.ca'>mark@drgreenberg.ca</a>.<br>A map to our location can be found <a href='https://drgreenberg.ca/contact/'>here</a>.<br>Everything else you need to know is on <a href='https://drgreenberg.ca'>our website</a>.<br><br>Thanks,<br>Max"
 # Load email credentials from JSON file
 with open("secrets.json","r") as f:
 	secrets=json.load(f)

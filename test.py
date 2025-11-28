@@ -2,7 +2,7 @@
 # Script for automating sending of appointment confirmation emails
 # Licensed under GPLv2
 from datetime import datetime, timedelta
-print("Enter appointment date:")
+print("Enter appointment date (YYYYMMDD format):")
 apptdate=input()
 print("Enter appointment time (HHMM 24hr format):")
 appttime=input()
@@ -14,12 +14,13 @@ if patnum in ("","0","1"):
 	appt="son's circumcision"
 else:
 	appt="sons' circumcisions"
+apptdateobj=datetime.strptime(apptdate, "%Y%m%d")
 appttimeobj=datetime.strptime(appttime, "%H%M")
 arrtimeobj=appttimeobj-timedelta(minutes=15)
 arrtime=arrtimeobj.strftime("%I:%M%p").lstrip("0")
 appttimedisp=appttimeobj.strftime("%I:%M%p").lstrip("0")
-print(apptdate)
-print(appttime)
+apptdatedisp=f"{apptdateobj.strftime('%A')}, {apptdateobj.strftime('%B')} {apptdateobj.day}"
+print(apptdatedisp)
 print(appttimedisp)
 print(arrtime)
 print(appt)

@@ -6,6 +6,9 @@ from datetime import datetime, timedelta
 import smtplib
 from email.mime.text import MIMEText
 import json
+import imaplib
+import time
+from email.utils import formatdate
 # Prompt for user input
 print("Enter appointment date (YYYYMMDD format):")
 apptdate=input()
@@ -47,3 +50,9 @@ msg['To']=recipient
 with smtplib.SMTP_SSL(server_url,port) as server:
 	server.login(username,password)
 	server.send_message(msg)
+imap_server="mail.drgreenberg.ca"
+sent_folder="INBOX.Sent"
+with imaplib.IMAP4_SSL(imap_server) as imap:
+	imap.login(username,password)
+	imap.append(sent_folder,'\\Seen',imaplib.Time2Internaldate(time.time()),msg.as_bytes())
+	imap.logout()

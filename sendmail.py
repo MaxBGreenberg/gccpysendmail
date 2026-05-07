@@ -33,7 +33,7 @@ arrtime=arrtimeobj.strftime("%I:%M%p").lstrip("0")
 appttimedisp=appttimeobj.strftime("%I:%M%p").lstrip("0")
 apptdatedisp=f"{apptdateobj.strftime('%A')}, {apptdateobj.strftime('%B')} {apptdateobj.day}"
 # HTML for body of the email
-body=f"Hello,<br><br>Thank you for booking your {appt} with the <a href='https://drgreenberg.ca'>Greenberg Circumcision Centre</a>.<br>Your appointment is booked for {apptdatedisp} at {appttimedisp}. Please arrive no later than {arrtime}.<br>Please remember to pay by the end of the day today either via the <a href='https://drgreenberg.ca/product/circumcision-services/'>secture web portal</a> or by Interac e-Transfer to <a href='mailto:mark@drgreenberg.ca'>mark@drgreenberg.ca</a>.<br>A map to our location can be found <a href='https://drgreenberg.ca/contact/'>here</a>.<br>Everything else you need to know is on <a href='https://drgreenberg.ca'>our website</a>.<br><br>Thanks,<br>Max"
+body=f"Hello,<br><br>Thank you for booking your {appt} with the <a href='https://drgreenberg.ca'>Greenberg Circumcision Centre</a>.<br>Your appointment is booked for {apptdatedisp} at {appttimedisp}. Please arrive no later than {arrtime}.<br>Please remember to pay by the end of the day today via the <a href='https://drgreenberg.ca/product/circumcision-services/'>secture web portal</a>.<br>A map to our location can be found <a href='https://drgreenberg.ca/contact/'>here</a>.<br>Everything else you need to know is on <a href='https://drgreenberg.ca'>our website</a>.<br><br>Thanks,<br>Max"
 # Load email credentials from JSON file
 with open("secrets.json","r") as f:
 	secrets=json.load(f)
